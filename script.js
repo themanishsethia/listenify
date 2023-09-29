@@ -1,5 +1,6 @@
 // Import the recordrtc library
-import RecordRTC from 'recordrtc';
+
+//import RecordRTC from 'recordrtc';
 
 let recorder;
 
