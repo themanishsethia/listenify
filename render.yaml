@@ -1,0 +1,4 @@
+build:
+  env:
+    - key: PORT
+      value: "3000"
