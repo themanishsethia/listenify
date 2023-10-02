@@ -1,20 +1,18 @@
-const PCMUtil = require('pcm-util');
-
 function convertArticleToWAV() {
-    const articleUrl = document.getElementById('articleUrl').value;
+  const articleUrl = document.getElementById('articleUrl').value;
 
-    fetch(`https://listenify-service.onrender.com/fetch?url=${encodeURIComponent(articleUrl)}`)
-        .then(response => response.arrayBuffer())
-        .then(audioData => {
-            const audioBlob = new Blob([audioData], { type: 'audio/wav' });
-            const audioUrl = URL.createObjectURL(audioBlob);
+  fetch(`https://listenify-service.onrender.com/fetch?url=${encodeURIComponent(articleUrl)}`)
+      .then(response => response.arrayBuffer())
+      .then(audioData => {
+          const audioBlob = new Blob([audioData], { type: 'audio/wav' });
+          const audioUrl = URL.createObjectURL(audioBlob);
 
-            const audioElement = new Audio(audioUrl);
-            audioElement.controls = true;
+          const audioElement = new Audio(audioUrl);
+          audioElement.controls = true;
 
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '';
-            resultDiv.appendChild(audioElement);
-        })
-        .catch(error => console.error('Error fetching the article:', error));
+          const resultDiv = document.getElementById('result');
+          resultDiv.innerHTML = '';
+          resultDiv.appendChild(audioElement);
+      })
+      .catch(error => console.error('Error fetching the article:', error));
 }
